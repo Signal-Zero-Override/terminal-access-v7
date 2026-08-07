@@ -1,24 +1,38 @@
 function sendMessage() {
   const inputField = document.getElementById('user-input');
   const chatBox = document.getElementById('chat-box');
-  const userText = inputField.value.trim().toLowerCase();
+  const rawInput = inputField.value.trim().toUpperCase(); // Convert to uppercase for uniformity
 
-  if (userText === '') return;
+  if (rawInput === '') return;
 
   // Display User Message
   appendMessage(inputField.value, 'user');
   inputField.value = '';
 
-  // Process Logic / Triggers
+  // Convert user input to Base64 to compare against stored theme keys
+  const encodedInput = btoa(rawInput);
+
   setTimeout(() => {
-    if (userText === 'cipher7' || userText === 'unlock') {
-      appendMessage('ACCESS GRANTED. Secret Key: [ALPHA-99]. Proceed to Step 8.', 'bot');
-    } else if (userText === 'hint') {
-      appendMessage('HINT: Look closely at the image header from Step 6.', 'bot');
+    // RED GROUP KEY: "ACCESS_KEY_0812-R3_B" -> Base64: "QUNDRVNTX0tFWV8wODEyLVIzX0I="
+    if (encodedInput === 'QUNDRVNTX0tFWV8wODEyLVIzX0I=') {
+      appendMessage('[RED SECTOR VERIFIED] Obsidian clearance level granted. Proceed to Step 8: Security Override.', 'bot');
+
+    // GREEN GROUP KEY: "BOTANICAL_CORE_SYNC" -> Base64: "Qk9UQU5JQ0FMX0NPUkVfU1lOQw=="
+    } else if (encodedInput === 'Qk9UQU5JQ0FMX0NPUkVfU1lOQw==') {
+      appendMessage('[GREEN SECTOR VERIFIED] Botanical Codex synchronized. Proceed to Step 8: Sector Authorization.', 'bot');
+
+    // YELLOW GROUP KEY: "OBSIDIAN_ROOT_99" -> Base64: "T0JTSURJQU5fUk9PVF85OQ=="
+    } else if (encodedInput === 'T0JTSURJQU5fUk9PVF85OQ==') {
+      appendMessage('[YELLOW SECTOR VERIFIED] Archive sector override confirmed. Proceed to Step 8: Terminal Unlock.', 'bot');
+
+    // GENERAL HINT: "HINT" -> Base64: "SElOVA=="
+    } else if (encodedInput === 'SElOVA==') {
+      appendMessage('HINT: Check your dossier PDF properties (File > Info) for your group clearance key.', 'bot');
+
     } else {
-      appendMessage('ERROR: Invalid passphrase. Access denied.', 'bot');
+      appendMessage('ERROR: Invalid sector key. Access denied.', 'bot');
     }
-  }, 500); // Small delay to simulate processing
+  }, 500);
 }
 
 function appendMessage(text, sender) {
