@@ -7,6 +7,12 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  animation: crtFlicker 0.15s infinite alternate;
+}
+
+@keyframes crtFlicker {
+  0% { opacity: 0.97; }
+  100% { opacity: 1; }
 }
 
 .chat-container {
