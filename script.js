@@ -1,7 +1,7 @@
 function sendMessage() {
   const inputField = document.getElementById('user-input');
   const chatBox = document.getElementById('chat-box');
-  const rawInput = inputField.value.trim().toUpperCase(); // Convert to uppercase for uniformity
+  const rawInput = inputField.value.trim().toUpperCase();
 
   if (rawInput === '') return;
 
@@ -9,23 +9,26 @@ function sendMessage() {
   appendMessage(inputField.value, 'user');
   inputField.value = '';
 
-  // Convert user input to Base64 to compare against stored theme keys
+  // Encode the user's input to Base64 for comparison
   const encodedInput = btoa(rawInput);
 
   setTimeout(() => {
-    // RED GROUP KEY: "ACCESS_KEY_0812-R3_B" -> Base64: "QUNDRVNTX0tFWV8wODEyLVIzX0I="
+    // RED GROUP: ACCESS_KEY_0812-R3_B
     if (encodedInput === 'QUNDRVNTX0tFWV8wODEyLVIzX0I=') {
-      appendMessage('[RED SECTOR VERIFIED] Obsidian clearance level granted. Proceed to Step 8: Security Override.', 'bot');
+      const redLink = '<br><br>👉 <a href="https://yourusername.github.io/step-8-red/" target="_blank" style="color: #00ff66; font-weight: bold; text-decoration: underline;">INITIALIZE STEP 8 OVERRIDE</a>';
+      appendMessage('[RED SECTOR VERIFIED] Obsidian clearance level granted.' + redLink, 'bot');
 
-    // GREEN GROUP KEY: "BOTANICAL_CORE_SYNC" -> Base64: "Qk9UQU5JQ0FMX0NPUkVfU1lOQw=="
+    // GREEN GROUP: BOTANICAL_CORE_SYNC
     } else if (encodedInput === 'Qk9UQU5JQ0FMX0NPUkVfU1lOQw==') {
-      appendMessage('[GREEN SECTOR VERIFIED] Botanical Codex synchronized. Proceed to Step 8: Sector Authorization.', 'bot');
+      const greenLink = '<br><br>👉 <a href="https://yourusername.github.io/step-8-green/" target="_blank" style="color: #00ff66; font-weight: bold; text-decoration: underline;">INITIALIZE STEP 8 OVERRIDE</a>';
+      appendMessage('[GREEN SECTOR VERIFIED] Botanical Codex synchronized.' + greenLink, 'bot');
 
-    // YELLOW GROUP KEY: "OBSIDIAN_ROOT_99" -> Base64: "T0JTSURJQU5fUk9PVF85OQ=="
+    // YELLOW GROUP: OBSIDIAN_ROOT_99
     } else if (encodedInput === 'T0JTSURJQU5fUk9PVF85OQ==') {
-      appendMessage('[YELLOW SECTOR VERIFIED] Archive sector override confirmed. Proceed to Step 8: Terminal Unlock.', 'bot');
+      const yellowLink = '<br><br>👉 <a href="https://yourusername.github.io/step-8-yellow/" target="_blank" style="color: #00ff66; font-weight: bold; text-decoration: underline;">INITIALIZE STEP 8 OVERRIDE</a>';
+      appendMessage('[YELLOW SECTOR VERIFIED] Archive sector override confirmed.' + yellowLink, 'bot');
 
-    // GENERAL HINT: "HINT" -> Base64: "SElOVA=="
+    // HINT
     } else if (encodedInput === 'SElOVA==') {
       appendMessage('HINT: Check your dossier PDF properties (File > Info) for your group clearance key.', 'bot');
 
@@ -35,11 +38,14 @@ function sendMessage() {
   }, 500);
 }
 
-function appendMessage(text, sender) {
+function appendMessage(content, sender) {
   const chatBox = document.getElementById('chat-box');
   const msgDiv = document.createElement('div');
   msgDiv.classList.add('message', sender);
-  msgDiv.textContent = text;
+  
+  // Using innerHTML allows standard HTML tags (like links) to render
+  msgDiv.innerHTML = content;
+  
   chatBox.appendChild(msgDiv);
   chatBox.scrollTop = chatBox.scrollHeight;
 }
