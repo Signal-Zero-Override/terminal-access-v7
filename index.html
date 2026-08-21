@@ -3,28 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ARCHIVAL TERMINAL // SECTOR ACCESS</title>
+  <title>Terminal Access - Security Breach Protocol</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="chat-container">
-    <div class="chat-header">
-      <span class="status-dot"></span> [CENTRAL ARCHIVE TERMINAL]
-    </div>
-    
-    <div id="chat-box" class="chat-box">
-      <div class="message bot">
-        [SYSTEM ALERT] Unauthorized connection detected. Central catalog locked under quarantine protocol.
+  <div class="terminal-container">
+    <header class="terminal-header">
+      <div class="status-indicator warning"></div>
+      <h1>SECTOR SECURITY TERMINAL</h1>
+      <p class="subtitle">SYSTEM ALERT: CLASSIFIED CLEARANCE DATA COMPROMISED</p>
+    </header>
+
+    <main class="terminal-body">
+      <div id="chat-box" class="chat-box">
+        <div class="message bot">
+          ⚠️ <b>CRITICAL SYSTEM NOTICE:</b><br>
+          Classified documents have been breached and passcodes were scattered across sector logs.<br>
+          Locate your sector passcode or enter <code>HELP</code> to review breach protocols.
+        </div>
       </div>
-      <div class="message bot">
-        Inspect your team dossier metadata and transmit your Sector Clearance Key below...
+    </main>
+
+    <footer class="terminal-footer">
+      <div class="input-group">
+        <span class="prompt-symbol">&gt;</span>
+        <input 
+          type="text" 
+          id="user-input" 
+          placeholder="Enter Sector Code or HELP..." 
+          autocomplete="off" 
+          autofocus
+        >
+        <button id="send-btn" onclick="sendMessage()">SUBMIT</button>
       </div>
-    </div>
-    
-    <div class="chat-input-area">
-      <input type="text" id="user-input" placeholder="Transmit clearance key..." autocomplete="off">
-      <button onclick="sendMessage()">TRANSMIT</button>
-    </div>
+    </footer>
   </div>
 
   <script src="script.js"></script>
