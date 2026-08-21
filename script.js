@@ -20,7 +20,7 @@ function sendMessage() {
 
     // GREEN GROUP: BOTANICAL_CORE_SYNC
     } else if (encodedInput === 'Qk9UQU5JQ0FMX0NPUkVfU1lOQw==') {
-      const greenLink = '<br><br>👉 <a href="https://yourusername.github.io/step-8-green/" target="_blank" style="color: #00ff66; font-weight: bold; text-decoration: underline;">INITIALIZE STEP 8 OVERRIDE</a>';
+      const greenLink = '<br><br>👉 <a href="Green Sector - Herbarium Vault Dossier.pdf" target="_blank" style="color: #00ff66; font-weight: bold; text-decoration: underline;">INITIALIZE STEP 8 OVERRIDE</a>';
       appendMessage('[GREEN SECTOR VERIFIED] Botanical Codex synchronized.' + greenLink, 'bot');
 
     // YELLOW GROUP: OBSIDIAN_ROOT_99
