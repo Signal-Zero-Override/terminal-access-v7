@@ -34,7 +34,7 @@ function sendMessage() {
 
     // HINT
     } else if (encodedInput === 'SElOVA==') {
-      appendMessage('HINT: Check your dossier PDF properties (File > Info) for your group clearance key.', 'bot');
+      appendMessage('HINT: The magnifying glass is the key. Look closely for the password. Enter no spaces.', 'bot');
 
     } else {
       appendMessage('ERROR: Invalid sector key. Access denied.', 'bot');
