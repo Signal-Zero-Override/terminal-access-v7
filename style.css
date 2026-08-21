@@ -26,8 +26,7 @@ body {
   box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
 }
 
-
-  /* Glitchy Text Animation */
+/* Glitchy Text Animation */
 .chat-header {
   padding: 15px;
   background-color: #002b11;
@@ -47,7 +46,6 @@ body {
   95% { transform: translate(0); color: #00ff66; text-shadow: none; }
   98% { transform: translate(-1px, -1px); text-shadow: -1px 0 #ff0055; }
   100% { transform: translate(0); text-shadow: none; }
-}
 }
 
 .status-dot {
