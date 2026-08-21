@@ -25,7 +25,7 @@ function sendMessage() {
 
     // YELLOW GROUP: OBSIDIAN_ROOT_99
     } else if (encodedInput === 'T0JTSURJQU5fUk9PVF85OQ==') {
-      const yellowLink = '<br><br>👉 <a href="https://github.com/Signal-Zero-Override/terminal-access-v7/blob/main/Yellow%20Sector%20-%20Central%20Archive%20Dossier.pdf" target="_blank" style="color: #00ff66; font-weight: bold; text-decoration: underline;">INITIALIZE STEP 8 OVERRIDE</a>';
+      const yellowLink = '<br><br>👉 <a href="Yellow Sector - Central Archive Dossier.pdf" target="_blank" style="color: #00ff66; font-weight: bold; text-decoration: underline;">INITIALIZE STEP 8 OVERRIDE</a>';
       appendMessage('[YELLOW SECTOR VERIFIED] Archive sector override confirmed.' + yellowLink, 'bot');
 
     // HINT
