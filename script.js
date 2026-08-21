@@ -1,6 +1,5 @@
 function sendMessage() {
   const inputField = document.getElementById('user-input');
-  const chatBox = document.getElementById('chat-box');
   const rawInput = inputField.value.trim().toUpperCase();
 
   if (rawInput === '') return;
@@ -9,13 +8,18 @@ function sendMessage() {
   appendMessage(inputField.value, 'user');
   inputField.value = '';
 
-  // Encode the user's input to Base64 for comparison
-  const encodedInput = btoa(rawInput);
+  // Encode the user's input to Base64 safely
+  let encodedInput = '';
+  try {
+    encodedInput = btoa(rawInput);
+  } catch (e) {
+    encodedInput = '';
+  }
 
   setTimeout(() => {
     // RED GROUP: ACCESS_KEY_0812-R3_B
     if (encodedInput === 'QUNDRVNTX0tFWV8wODEyLVIzX0I=') {
-      const redLink = '<br><br>👉 <a href="Red Sector - Obsidian Override Dossier.pdf"_blank" style="color: #00ff66; font-weight: bold; text-decoration: underline;">INITIALIZE STEP 8 OVERRIDE</a>';
+      const redLink = '<br><br>👉 <a href="Red Sector - Obsidian Override Dossier.pdf" target="_blank" style="color: #00ff66; font-weight: bold; text-decoration: underline;">INITIALIZE STEP 8 OVERRIDE</a>';
       appendMessage('[RED SECTOR VERIFIED] Obsidian clearance level granted.' + redLink, 'bot');
 
     // GREEN GROUP: BOTANICAL_CORE_SYNC
@@ -40,19 +44,26 @@ function sendMessage() {
 
 function appendMessage(content, sender) {
   const chatBox = document.getElementById('chat-box');
+  if (!chatBox) return;
+
   const msgDiv = document.createElement('div');
   msgDiv.classList.add('message', sender);
-  
+
   // Using innerHTML allows standard HTML tags (like links) to render
   msgDiv.innerHTML = content;
-  
+
   chatBox.appendChild(msgDiv);
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// Allow pressing "Enter" to send
-document.getElementById('user-input').addEventListener('keypress', function (e) {
-  if (e.key === 'Enter') {
-    sendMessage();
+// Ensure DOM elements exist before binding event listener
+document.addEventListener('DOMContentLoaded', () => {
+  const inputEl = document.getElementById('user-input');
+  if (inputEl) {
+    inputEl.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
   }
 });
